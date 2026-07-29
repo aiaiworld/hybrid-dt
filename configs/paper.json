@@ -1,0 +1,70 @@
+{
+  "controlled_5gc": {
+    "timesteps": 1800,
+    "window": 12,
+    "horizon": 3,
+    "seed": 7,
+    "split": {
+      "type": "chronological",
+      "train": 0.65,
+      "validation": 0.15,
+      "test": 0.20
+    }
+  },
+  "telecomts": {
+    "dataset_id": "AliMaatouk/TelecomTS",
+    "split": "train",
+    "samples": 800,
+    "sampling": "even",
+    "input_steps": 96,
+    "target_steps": 32,
+    "main_seed": 17,
+    "robustness_seeds": [7, 11, 17, 23, 29],
+    "split_ratio": {
+      "train": 0.65,
+      "validation": 0.15,
+      "test": 0.20
+    },
+    "snapshot_sha256": "f410765a0cdd4e4802967de4304e5d138455524389e83e132e682e71f9c509b6"
+  },
+  "models": {
+    "persistence": {
+      "sla_ms": [45.0, 12.0, 80.0]
+    },
+    "ridge_flat": {
+      "alpha_controlled": 25.0,
+      "alpha_telecomts": 35.0
+    },
+    "temporal_mlp": {
+      "hidden_controlled": 128,
+      "learning_rate_controlled": 0.016,
+      "epochs_controlled": 180,
+      "hidden_telecomts": 96,
+      "learning_rate_telecomts": 0.012,
+      "epochs_telecomts": 160,
+      "telecomts_initialization_seed": 17
+    },
+    "mp_graph": {
+      "code_name": "s_twingnn_lite",
+      "selection_score": "validation_latency_mae - 6 * validation_violation_f1",
+      "fixed_random_seed": 11
+    },
+    "hybrid_dt": {
+      "latency_fusion": {
+        "mp_graph": 0.25,
+        "ridge_flat": 0.75
+      },
+      "violation_fusion": {
+        "mp_graph": 0.15,
+        "temporal_mlp": 0.85
+      },
+      "mlp_initialization_seed": "row-split seed"
+    }
+  },
+  "metrics": {
+    "latency": ["MAE", "RMSE", "MAPE"],
+    "violation": ["accuracy", "precision", "recall", "F1"],
+    "classification_threshold": 0.5,
+    "multiseed_std_ddof": 1
+  }
+}

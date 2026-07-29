@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying paper when using this artifact."
+title: "Hybrid-DT Reproducibility Artifact"
+type: software
+version: 1.0.0
+date-released: 2026-07-29
+authors:
+  - family-names: "Authors"
+    given-names: "Anonymous"
+license: MIT

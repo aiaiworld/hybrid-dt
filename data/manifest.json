@@ -1,0 +1,23 @@
+{
+  "artifact": "telecomts_800_even.jsonl.gz",
+  "sha256": "f410765a0cdd4e4802967de4304e5d138455524389e83e132e682e71f9c509b6",
+  "rows": 800,
+  "uncompressed_format": "JSON Lines",
+  "retained_fields": ["KPIs", "labels"],
+  "source": {
+    "dataset_id": "AliMaatouk/TelecomTS",
+    "url": "https://huggingface.co/datasets/AliMaatouk/TelecomTS",
+    "api": "https://datasets-server.huggingface.co/rows",
+    "config": "default",
+    "split": "train",
+    "reported_total_rows": 32000,
+    "license": "MIT",
+    "retrieved_at": "2026-07-08T23:11:13+07:00"
+  },
+  "sampling": {
+    "method": "eight evenly spaced API pages",
+    "page_size": 100,
+    "offset_rule": "numpy.linspace(0, total_rows - page_size, 8, dtype=int)"
+  },
+  "note": "The checksum, not the mutable upstream branch, identifies the exact paper snapshot."
+}
