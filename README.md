@@ -23,7 +23,7 @@ service. Replace `Anonymous Authors` in `LICENSE`, `CITATION.cff`, and
 
 ## Quick Start
 
-Python 3.12 is the reference environment. Python 3.10-3.13 is supported.
+Python 3.12 is the reference environment. Python 3.11-3.13 is supported.
 
 ```bash
 python3.12 -m venv .venv
